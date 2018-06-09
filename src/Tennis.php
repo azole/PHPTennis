@@ -17,6 +17,10 @@ class Tennis
      */
     public function getResult()
     {
+        if($this->game->first_player_score == 1) {
+            return 'Fifteen Love';
+        }
+
         return 'Love All';
     }
 }

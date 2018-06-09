@@ -21,7 +21,7 @@ final class TennisTest extends TestCase
      */
     public function it_should_get_tennis_score($player1_name, $player2_name, $score1, $score2, $expected)
     {
-        $this->GivenTennis(0, 0);
+        $this->GivenTennis($score1, $score2);
 
         $this->assertEquals($expected, $this->tennis->getResult());
     }
@@ -30,7 +30,7 @@ final class TennisTest extends TestCase
     {
         return [
             ['Joey', 'Tom', 0, 0, 'Love All'],
-//            ['Joey', 'Tom', 1, 0, 'Fifteen Love'],
+            ['Joey', 'Tom', 1, 0, 'Fifteen Love'],
 //            ['Joey', 'Tom', 2, 0, 'Thirty Love'],
 //            ['Joey', 'Tom', 3, 0, 'Forty Love'],
 //            ['Joey', 'Tom', 0, 1, 'Love Fifteen'],
