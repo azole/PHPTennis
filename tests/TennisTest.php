@@ -6,6 +6,9 @@ use PHPUnit\Framework\TestCase;
 
 final class TennisTest extends TestCase
 {
+    const AnyGameId = 1;
+    private $tennis;
+
     /**
      * @test
      * @dataProvider scoreProvider
@@ -18,19 +21,9 @@ final class TennisTest extends TestCase
      */
     public function it_should_get_tennis_score($player1_name, $player2_name, $score1, $score2, $expected)
     {
-        // Arrange
-        $game = new Game();
-        $game->id = 1;
-        $game->first_player_score = $score1;
-        $game->second_player_score = $score2;
+        $this->GivenTennis(0, 0);
 
-        $tennis = new Tennis($game);
-
-        // Act
-        $actual = $tennis->getResult();
-
-        // Assert
-        $this->assertEquals($expected, $actual);
+        $this->assertEquals($expected, $this->tennis->getResult());
     }
 
     public function scoreProvider()
@@ -59,6 +52,21 @@ final class TennisTest extends TestCase
 //            ['Joey', 'Tom', 7, 5, 'Joey Win'],
 //            ['Joey', 'Tom', 10, 8, 'Joey Win'],
         ];
+    }
+
+    /**
+     * @param $score1
+     * @param $score2
+     * @return Game
+     */
+    public function GivenTennis($score1, $score2)
+    {
+        $game = new Game();
+        $game->id = self::AnyGameId;
+        $game->first_player_score = $score1;
+        $game->second_player_score = $score2;
+
+        $this->tennis = new Tennis($game);
     }
 
 }
