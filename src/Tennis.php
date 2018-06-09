@@ -3,6 +3,10 @@
 class Tennis
 {
     private $game;
+    private $scoreLookup = [
+        1 => 'Fifteen',
+        2 => 'Thirty',
+    ];
 
     public function __construct(Game $game)
     {
@@ -17,13 +21,10 @@ class Tennis
      */
     public function getResult()
     {
-        if($this->game->first_player_score == 2) {
-            return 'Thirty Love';
+        if($this->game->first_player_score > 0) {
+            return $this->scoreLookup[$this->game->first_player_score] . ' Love';
         }
 
-        if($this->game->first_player_score == 1) {
-            return 'Fifteen Love';
-        }
 
         return 'Love All';
     }
