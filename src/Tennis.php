@@ -22,6 +22,12 @@ class Tennis
      */
     public function getResult()
     {
+        if($this->game->second_player_score == 2) {
+            return 'Love Thirty';
+        }
+        if($this->game->second_player_score == 1) {
+            return 'Love Fifteen';
+        }
         if($this->game->first_player_score > 0) {
             return $this->scoreLookup[$this->game->first_player_score] . ' Love';
         }
